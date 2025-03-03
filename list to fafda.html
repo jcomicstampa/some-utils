@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON List Converter</title>
+</head>
+<body>
+    <h1>Convert JSON List</h1>
+    <textarea id="input" rows="15" cols="70" placeholder="Paste your JSON here"></textarea>
+    <br>
+    <button onclick="convertList()">Convert</button>
+    <h2>Output</h2>
+    <textarea id="output" rows="15" cols="70" readonly></textarea>
+
+    <script>
+        function convertList() {
+            const inputElement = document.getElementById('input');
+            const outputElement = document.getElementById('output');
+
+            try {
+                const input = JSON.parse(inputElement.value);
+
+                if (!Array.isArray(input)) {
+                    throw new Error('Input should be a list of objects');
+                }
+
+                const output = input.map(item => `
+    - readOnly: false # I will explain later keep it same
+      authToken: '${item.authToken}'
+      username: '${item.username}'
+      releaseId: ${item.releaseId}
+      releaseTag: '${item.releaseTag}'
+      repository: '${item.repository}'
+                `.trim()).join('\n\n');
+
+                outputElement.value = output;
+            } catch (error) {
+                outputElement.value = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
