@@ -92,7 +92,7 @@ bpm = int(input("Enter BPM (1-300): "))
 duration = float(input("Enter duration in seconds: "))
 
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S_%f")
-output_file = f"CHAOS_{timestamp}.mid"
+output_file = f"random_midi_-1_{timestamp}.mid"
 
 print(f"Creating {duration}s of chaos at {bpm} BPM...")
 create_dissonant_composition(output_file, bpm, duration)
