@@ -86,7 +86,7 @@ duration_seconds = float(input("Enter the duration in seconds (e.g., 120): "))
 
 # Generate timestamped filename
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-output_filename = f"atonal_piano_{timestamp}.mid"
+output_filename = f"random_midi_0_{timestamp}.mid"
 
 # Generate composition
 print(f"Creating {duration_seconds} second composition at {bpm} BPM...")
