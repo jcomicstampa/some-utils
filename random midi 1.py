@@ -60,7 +60,7 @@ def main():
 
     # Create a timestamp for the filename to avoid overwriting
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    output_filename = f"atonal_dissonant_piano_{timestamp}.mid"
+    output_filename = f"random_midi_1_{timestamp}.mid"
 
     # Save the MIDI file
     with open(output_filename, "wb") as midi_file:
