@@ -146,15 +146,15 @@ INSTRUMENTS = [
     ("Gunshot", 127)
 ]
 
-def generate_dissonant_composition(output_file="dissonant.mid", length_beats=16, 
+def generate_dissonant_composition(output_file="midi.mid", length_beats=16, 
                                   microtonal=False, instrument_mode=0, tempo=90,
                                   specific_instrument=None):
     midi = MIDIFile(1)
     track = 0
     time = 0
-    track_name = "Dissonant"
+    track_name = "midi"
     if microtonal:
-        track_name += " Microtonal"
+        track_name += " Microtonal midi"
     if instrument_mode > 0:
         track_name += f" Multi-Instrument (Level {instrument_mode})"
     if specific_instrument is not None:
@@ -238,7 +238,7 @@ def generate_dissonant_composition(output_file="dissonant.mid", length_beats=16,
         midi.writeFile(f)
 
 if __name__ == "__main__":
-    filename = f"dissonant_{random.randint(0, 9999999):09}.mid"
+    filename = f"random_midi_2_{random.randint(0, 9999999):09}.mid"
     length = 16
     microtonal = False
     instrument_mode = 0
