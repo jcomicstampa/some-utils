@@ -101,6 +101,16 @@
     button:hover:not(:disabled) {
       background: #2b6cb0;
     }
+    /* Progress bar styling */
+    #progressContainer {
+      display: none;
+      margin-top: 20px;
+      text-align: center;
+    }
+    progress {
+      width: 100%;
+      height: 20px;
+    }
     footer {
       text-align: center;
       margin-top: 20px;
@@ -154,6 +164,12 @@
       <button id="remapButton" disabled>Remap Frequencies/Durations/Types</button>
       <button id="saveButton" disabled>Save as WAV</button>
     </div>
+  </div>
+  
+  <!-- Progress Bar for WAV Export -->
+  <div id="progressContainer">
+    <progress id="progressBar" value="0" max="100"></progress>
+    <p>Estimated time remaining: <span id="etaDisplay">0</span> seconds</p>
   </div>
 
   <script>
@@ -355,6 +371,22 @@
         oscillator.stop(currentTime + duration);
         currentTime += duration;
       }
+      // Show progress UI.
+      const progressContainer = document.getElementById("progressContainer");
+      const progressBar = document.getElementById("progressBar");
+      const etaDisplay = document.getElementById("etaDisplay");
+      progressContainer.style.display = "block";
+      progressBar.value = 0;
+      // Set an estimated rendering time (in ms). Here we assume 5000 ms (5 seconds).
+      const estimatedRenderTime = 5000;
+      const startTime = Date.now();
+      const progressInterval = setInterval(() => {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(100, (elapsed / estimatedRenderTime) * 100);
+        progressBar.value = progress;
+        const eta = Math.max(0, ((estimatedRenderTime - elapsed) / 1000)).toFixed(1);
+        etaDisplay.textContent = eta;
+      }, 100);
       offlineContext.startRendering().then((renderedBuffer) => {
         const wavBlob = bufferToWav(renderedBuffer);
         const url = URL.createObjectURL(wavBlob);
@@ -363,9 +395,17 @@
         link.download = 'sonification.wav';
         link.click();
         URL.revokeObjectURL(url);
+        clearInterval(progressInterval);
+        progressBar.value = 100;
+        etaDisplay.textContent = "0.0";
+        setTimeout(() => {
+          progressContainer.style.display = "none";
+        }, 500);
       }).catch((e) => {
         console.error(e);
         alert("An error occurred during WAV export.");
+        clearInterval(progressInterval);
+        progressContainer.style.display = "none";
       });
     }
 
