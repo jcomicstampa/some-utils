@@ -4,112 +4,207 @@
     <title>RYM to Hyperlink</title>
     <style>
         :root {
-            --bg: #1a1a1a;
-            --surface: #2d2d2d;
-            --text: #e0e0e0;
-            --primary: #4CAF50;
-            --secondary: #2196F3;
-            --accent: #ff5722;
+            --bg-color: #0a0a0a;
+            --surface-color: #151515;
+            --primary-color: #7c4dff;
+            --secondary-color: #00e676;
+            --text-primary: #ffffff;
+            --text-secondary: #888;
+            --error-color: #ff5252;
         }
 
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            margin: 20px;
-            background-color: var(--bg);
-            color: var(--text);
+            margin: 0;
+            padding: 2rem;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: 'Inter', system-ui, sans-serif;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
         }
 
         .container {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            max-width: 1200px;
-            margin: 20px auto;
+            gap: 2rem;
+            width: 100%;
+            max-width: 1600px;
+            height: 80vh;
         }
 
-        #left {
-            width: 100%;
-            height: 300px;
-            padding: 15px;
-            border: 2px solid var(--surface);
-            border-radius: 8px;
-            background: var(--surface);
-            color: var(--text);
-            resize: vertical;
+        .panel {
+            background: var(--surface-color);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease;
         }
 
-        #right {
+        .panel:hover {
+            transform: translateY(-2px);
+        }
+
+        h2 {
+            margin: 0 0 1.5rem 0;
+            font-weight: 600;
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        .input-container,
+        .output-container {
+            position: relative;
+            flex: 1;
+            background: #111;
+            border-radius: 10px;
+            padding: 1.2rem;
+            overflow: auto;
+        }
+
+        textarea {
             width: 100%;
-            height: 300px;
-            padding: 15px;
-            border: 2px solid var(--surface);
-            border-radius: 8px;
-            background: var(--surface);
-            color: var(--text);
-            overflow-y: auto;
+            height: 100%;
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            resize: none;
+            padding: 0;
+        }
+
+        textarea:focus {
+            outline: none;
+        }
+
+        .output-content {
+            color: var(--secondary-color);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 13px;
+            line-height: 1.5;
             white-space: pre-wrap;
+            height: 100%;
         }
 
         .button-group {
             display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 1rem;
+            margin-bottom: 2rem;
             justify-content: center;
         }
 
         button {
             padding: 12px 25px;
             border: none;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            background-color: var(--primary);
+            background-color: var(--primary-color);
             color: white;
+            font-weight: 500;
+            transition: all 0.2s ease;
         }
 
         button.secondary {
-            background-color: var(--secondary);
+            background-color: var(--secondary-color);
         }
 
-        .notification {
+        button:hover {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            z-index: 1;
+        }
+
+        .copy-btn:hover {
+            background: #6d40e5;
+            transform: scale(1.05);
+        }
+
+        .status {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--surface-color);
+            padding: 8px 16px;
+            border-radius: 8px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .home-button {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            padding: 12px 25px;
-            border-radius: 6px;
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-        }
-
-        a {
-            color: var(--secondary);
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
             text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            z-index: 1000;
         }
 
-        a:hover {
-            text-decoration: underline;
+        .home-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            background: #6d40e5;
         }
     </style>
 </head>
 <body>
-    <h2 style="text-align: center;">RYM to Hyperlink</h2>
-    <div class="button-group">
-        <button onclick="sortLinks()">🔠 Sort Alphabetically</button>
-        <button class="secondary" onclick="copyContent('left')">📋 Copy Left</button>
-        <button class="secondary" onclick="copyContent('right')">📋 Copy Right</button>
-    </div>
-
     <div class="container">
-        <textarea id="left" placeholder="Raw format:
+        <div class="panel">
+            <h2>RYM to Hyperlink</h2>
+            <div class="button-group">
+                <button onclick="sortLinks()">🔠 Sort Alphabetically</button>
+            </div>
+            <div class="input-container">
+                <textarea id="left" placeholder="Raw format:
 [url, title]
 [b]text [url, title][/b]"></textarea>
-        <div id="right" contenteditable="true" placeholder="Formatted links will appear here"></div>
+                <button class="copy-btn" onclick="copyContent('left')">📋 Copy</button>
+            </div>
+        </div>
+        
+        <div class="panel">
+            <h2>Formatted Output</h2>
+            <div class="output-container">
+                <div class="output-content" id="right" contenteditable="true"></div>
+                <button class="copy-btn" onclick="copyContent('right')">📋 Copy</button>
+            </div>
+        </div>
     </div>
+
+    <div class="status" id="status"></div>
 
     <script>
         let entries = [];
 
-        // Real-time conversion
         document.getElementById('left').addEventListener('input', updateRight);
         document.getElementById('right').addEventListener('input', updateLeft);
 
@@ -130,7 +225,6 @@
                 line = line.trim();
                 if (!line) return null;
 
-                // Enhanced bold format handling with nested brackets
                 const boldMatch = line.match(/\[b\](.*?)\[(https?:\/\/[^\s,\]]+),\s*([^\]]+)\]\s*\[\/b\]/i);
                 if (boldMatch) {
                     const prefix = boldMatch[1].trim();
@@ -142,7 +236,6 @@
                     };
                 }
 
-                // Regular format
                 const regMatch = line.match(/\[(https?:\/\/[^\s,\]]+),\s*([^\]]+)\]/);
                 if (regMatch) {
                     return {
@@ -168,7 +261,6 @@
                 if (el.tagName === 'STRONG') {
                     const link = el.querySelector('a');
                     let prefix = '';
-                    // Collect all text nodes before the link
                     const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
                     let node;
                     while ((node = walker.nextNode())) {
@@ -206,26 +298,17 @@
             });
             updateRightDisplay();
             updateLeftDisplay();
-            showNotification('List sorted alphabetically!');
+            showStatus('List sorted alphabetically!');
         }
 
         async function copyContent(side) {
             try {
+                let content;
                 if (side === 'left') {
-                    const text = document.getElementById('left').value;
-                    await navigator.clipboard.writeText(text);
+                    content = document.getElementById('left').value;
+                    await navigator.clipboard.writeText(content);
                 } else {
-                    // Create rich text format for proper pasting
-                    const htmlContent = entries.map(e => {
-                        // Convert formatted entries to clean HTML
-                        const temp = document.createElement('div');
-                        temp.innerHTML = e.formatted;
-                        // Remove contenteditable attributes
-                        temp.querySelectorAll('[contenteditable]').forEach(el => el.removeAttribute('contenteditable'));
-                        return temp.innerHTML;
-                    }).join('');
-
-                    // Create both HTML and plain text versions
+                    const htmlContent = entries.map(e => e.formatted).join('');
                     const plainText = entries.map(e => {
                         const temp = document.createElement('div');
                         temp.innerHTML = e.formatted;
@@ -233,35 +316,31 @@
                         return link ? `${link.textContent} (${link.href})` : temp.textContent;
                     }).join('\n');
 
-                    // Write both formats to clipboard
                     const blob = new Blob([`<!DOCTYPE html><html><body>${htmlContent}</body></html>`], { type: 'text/html' });
                     const textBlob = new Blob([plainText], { type: 'text/plain' });
                     
-                    const data = [
-                        new ClipboardItem({
-                            'text/html': blob,
-                            'text/plain': textBlob
-                        })
-                    ];
-
+                    const data = [new ClipboardItem({
+                        'text/html': blob,
+                        'text/plain': textBlob
+                    })];
                     await navigator.clipboard.write(data);
                 }
-                showNotification(`📋 Copied ${side} content!`);
+                showStatus(`📋 Copied ${side} content!`, 'secondary-color');
             } catch (err) {
-                showNotification('❌ Failed to copy!');
+                showStatus('❌ Failed to copy!', 'error-color');
             }
         }
 
-        function showNotification(message) {
-            const el = document.createElement('div');
-            el.className = 'notification';
-            el.textContent = message;
-            document.body.appendChild(el);
-            setTimeout(() => el.remove(), 2000);
+        function showStatus(message, colorVar = 'primary-color') {
+            const status = document.getElementById('status');
+            status.style.color = `var(${colorVar})`;
+            status.textContent = message;
+            status.style.opacity = '1';
+            setTimeout(() => status.style.opacity = '0', 2000);
         }
     </script>
 
-<!-- Home Button -->
+ <!-- Home Button -->
 <a href="https://jcomicstampa.github.io/some-utils/" class="home-button" aria-label="Return to Home">
     🏠
 </a>
@@ -297,6 +376,5 @@
     transform: scale(0.95);
 }
 </style>
-    
 </body>
 </html>
