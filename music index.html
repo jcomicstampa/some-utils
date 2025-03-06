@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>music index</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --background-color: #f8fafc;
+            --text-color: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        #searchInput:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .category-section {
+            margin: 2rem 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+        }
+
+        .category-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .category-title::after {
+            content: '▼';
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .category-title.collapsed::after {
+            transform: rotate(-90deg); /* Rotate arrow when collapsed */
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+            overflow: hidden;
+        }
+
+        .links-grid.collapsed {
+            opacity: 0;
+            max-height: 0;
+        }
+
+        .link-card {
+            padding: 1rem;
+            border-radius: 8px;
+            background: #fff;
+            transition: transform 0.2s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .link-title {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .link-description {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .link-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #e2e8f0;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #475569;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+            
+            .category-section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>music index</h1>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search links...">
+        </div>
+
+        <div id="linksContainer"></div>
+    </div>
+
+    <script>
+        // Link data structure
+        const linksData = [
+  {
+    category: "100 gecs",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/88k33jqw20kr",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "100 gecs",
+        url: "https://pomf2.lain.la/f/p6reiet.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "1000 gecs",
+        url: "https://pomf2.lain.la/f/mgb968r.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "1000 gecs (Vinyl 24b-96khz)",
+        url: "https://pomf2.lain.la/f/6trbrbkc.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "1000 gecs and the Tree of Clues",
+        url: "https://pomf2.lain.la/f/lyjd2de.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "10,000 gecs",
+        url: "https://pomf2.lain.la/f/ajnpvm.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Snake Eyes",
+        url: "https://pomf2.lain.la/f/xtc9haqq.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "4g",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/ckix1951dlg7",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Cloud",
+        url: "https://pomf2.lain.la/f/clscei00.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "666",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/3iglewyvycu1",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Nekrofilie",
+        url: "https://pomf2.lain.la/f/0lz09df.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "894",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/e5h8sdjk3rdy",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Tonband-Protokoll",
+        url: "https://pomf2.lain.la/f/ooikj1w1.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Abyssic Hate",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/qivce9dwpult",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Betrayed",
+        url: "https://small.fileditchstuff.me/s19/TFcVUyQAVKmCfQUWjuVd.7z",
+        description: "",
+        tags: ["MP3", "fileditch"]
+      },
+      {
+        title: "Cleansing of an Ancient Race",
+        url: "https://small.fileditchstuff.me/s19/VYjFjCIKFnBGTNgZAFK.7z",
+        description: "",
+        tags: ["MP3", "fileditch"]
+      },
+      {
+        title: "Depression",
+        url: "https://small.fileditchstuff.me/s19/hcTbkwZselHVONKQKvDK.7z",
+        description: "",
+        tags: ["MP3", "fileditch"]
+      },
+      {
+        title: "Eternal Damnation",
+        url: "https://big.fileditchstuff.me/b47/ASJvksDlLxTvvgwKKDH.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "Life Is a Pain in the Neck",
+        url: "https://small.fileditchstuff.me/s19/EQKautZLBvIsBmxHNpJ.7z",
+        description: "",
+        tags: ["MP3", "fileditch"]
+      },
+      {
+        title: "Suicidal Emotions",
+        url: "https://small.fileditchstuff.me/s19/rqrobWPsztMdmwtxVdGK.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "The Source of Suffering",
+        url: "https://small.fileditchstuff.me/s19/jnpOXGebhJhDPJzAPXwv.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "United by Heathen Blood",
+        url: "https://small.fileditchstuff.me/s19/awbvHBiJgsHnmvlveXwV.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "Welcome to the Anarchy",
+        url: "https://small.fileditchstuff.me/s19/vgzMPusQcprJuTeUXqWS.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      }
+    ]
+  },
+  {
+    category: "Caen",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/1uvyjj4mtcpb",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Athe",
+        url: "https://pomf2.lain.la/f/d10b3kaa.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Middlefield",
+        url: "https://pomf2.lain.la/f/t96fy4cy.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "The History of Your Immediate Surroundings",
+        url: "https://pomf2.lain.la/f/f8ptnm9.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Waiting Music",
+        url: "https://pomf2.lain.la/f/1ilhg1bi.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Gordon Ashworth",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/scjxn1vsuto5",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Cajun Mix for Dinner",
+        url: "https://pomf2.lain.la/f/i6ae9xfk.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Despairing Summer - American Ulterior",
+        url: "https://pomf2.lain.la/f/pvw9uk3o.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Live From Si’ahl",
+        url: "https://pomf2.lain.la/f/d0hizeab.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Public Loops Volume One",
+        url: "https://pomf2.lain.la/f/7nyq4zb.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "S.T.L.A.",
+        url: "https://pomf2.lain.la/f/4gp5bf04.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "The One You Love & Cannot Trust",
+        url: "https://pomf2.lain.la/f/5wzmz1r1.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Tree of Heaven",
+        url: "https://pomf2.lain.la/f/m3q2goa.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Heltir",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/mvg92j0tnklg",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "69 Rituals",
+        url: "https://pomf2.lain.la/f/0ttzbdi.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Il banchetto dei cancri / VC-706",
+        url: "https://pomf2.lain.la/f/34t88w46.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Neue sachlichkeit",
+        url: "https://pomf2.lain.la/f/nn6gbi8i.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "井内賢吾 [Kengo Iuchi]",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/tqdbf9nch8l0",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Anata no Kyouki no Haru ga Saku (あなたの狂気の春が咲く)",
+        url: "https://pomf2.lain.la/f/wx5pw0nb.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Hana Kurui no Yoru (花狂いの夜)",
+        url: "https://pomf2.lain.la/f/eiizes38.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Inugami to Kachiku (犬神と家畜)",
+        url: "https://pomf2.lain.la/f/n1mni0g2.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Jaki Matsuri '89 Live (邪鬼祭 '89ライブ)",
+        url: "https://pomf2.lain.la/f/ixzbsmeg.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "One (壱)",
+        url: "https://pomf2.lain.la/f/em0yx2vf.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Osaka 1999",
+        url: "https://pomf2.lain.la/f/9pg7q6ne.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Utsu (鬱)",
+        url: "https://pomf2.lain.la/f/vkfgaxyx.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "苦音の鐘の鳴",
+        url: "https://pomf2.lain.la/f/4cer8vf6.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Rozz Williams",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/0lz256eg32xj",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Accept the Gift of Sin",
+        url: "https://small.fileditchstuff.me/s19/EOUOLlxNpAyLZAOVqiO.7z",
+        description: "",
+        tags: ["MP3", "fileditch"]
+      },
+      {
+        title: "Dream Home Heartache",
+        url: "https://small.fileditchstuff.me/s19/TlsZaTJkUZXsmeQUbYPP.7z",
+        description: "",
+        tags: ["MP3", "fileditch"]
+      },
+      {
+        title: "Every King a Bastard Son",
+        url: "https://small.fileditchstuff.me/s19/dZzshGXyjqKDuAZsqxL.7z",
+        description: "",
+        tags: ["MP3", "fileditch"]
+      },
+      {
+        title: "Invocations",
+        url: "https://small.fileditchstuff.me/s19/xIbFLKbQPusqXrrYBIeo.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "Live in Berlin",
+        url: "https://small.fileditchstuff.me/s19/FbqoKnOZnoryGNqoBXll.7z",
+        description: "",
+        tags: ["MP3", "fileditch"]
+      },
+      {
+        title: "On the Altar / In the Heart",
+        url: "https://small.fileditchstuff.me/s19/BksYOEIXLdISapzoood.7z",
+        description: "",
+        tags: ["MP3", "fileditch"]
+      },
+      {
+        title: "Pig",
+        url: "https://small.fileditchstuff.me/s19/qmveWdswzMFNQECBlyIA.7z",
+        description: "",
+        tags: ["MP3", "fileditch"]
+      },
+      {
+        title: "Shrine",
+        url: "https://small.fileditchstuff.me/s19/SOSljoRRurSoirccVwJf.7z",
+        description: "",
+        tags: ["MP3", "fileditch"]
+      },
+      {
+        title: "Sleeping Dogs",
+        url: "https://small.fileditchstuff.me/s19/WMzohReheQkMFZqXYJEj.7z",
+        description: "",
+        tags: ["MP3", "fileditch"]
+      },
+      {
+        title: "The Whorse's Mouth",
+        url: "https://small.fileditchstuff.me/s19/bZmDDKwQpvcJYmUSGeuR.7z",
+        description: "",
+        tags: ["MP3", "fileditch"]
+      },
+      {
+        title: "Untitled",
+        url: "https://small.fileditchstuff.me/s19/blbcbtOGucrGCNQdzIle.7z",
+        description: "",
+        tags: ["MP3", "fileditch"]
+      }
+    ]
+  },
+  {
+    category: "Supersilent",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/su8pm1y498t4",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "1-3",
+        url: "https://big.fileditchstuff.me/b46/UlmEAJMwWzbOCDmxrSUv.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "4",
+        url: "https://small.fileditchstuff.me/s19/jvhkjGNZXZXbxFpyWAhQ.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "5",
+        url: "https://small.fileditchstuff.me/s19/nUakAFHGdzVXHLaxvueH.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "6",
+        url: "https://small.fileditchstuff.me/s19/FRwYabjaLUOMAUjVXtGM.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "7",
+        url: "https://big.fileditchstuff.me/b46/nliYdoGHfyDiJeRkwaKH.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "8",
+        url: "https://small.fileditchstuff.me/s19/aJLvJWroYmDiRkaDxWrV.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "9",
+        url: "https://small.fileditchstuff.me/s19/SkCdafpIJulEIrbvnanU.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "10",
+        url: "https://small.fileditchstuff.me/s19/mwPVgtSiTLuyGMFiJfXr.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "11",
+        url: "https://small.fileditchstuff.me/s19/MEeHoFLRiUGIZaVLHrzK.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "12",
+        url: "https://small.fileditchstuff.me/s19/BEmSNPHkGowQeNzXPOJd.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "13",
+        url: "https://small.fileditchstuff.me/s19/rVsFxSoVczJeUnOQSQlT.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "14",
+        url: "https://small.fileditchstuff.me/s19/EsCCtuvmXtVDBQAZpedG.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "100",
+        url: "https://small.fileditchstuff.me/s19/cCDwAKSBqcmtMjRYLLcD.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      }
+    ]
+  },
+  {
+    category: "Taj Mahal Travellers",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/h0o7s5emi6h5",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "August 1972 London",
+        url: "https://pomf2.lain.la/f/vzp8chxc.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "August 1974",
+        url: "https://pomf2.lain.la/f/izmo0dc0.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "July 15, 1972",
+        url: "https://pomf2.lain.la/f/002qh4qe.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Live in Stockholm 1971 (ライブ・イン・ストックホルム1971)",
+        url: "https://pomf2.lain.la/f/aujtohhc.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "OZ Days Live",
+        url: "https://pomf2.lain.la/f/8bjz7h4o.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Sound Picnic at Kuwanichika on Sunday 16th Oct 1977 3-8 PM",
+        url: "https://pomf2.lain.la/f/puv311re.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "ヴェッダ・ミュージック・ワークショップ [Vedda Music Workshop]",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/k8dt4s0hgo92",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Electric Vedda Ensemble I",
+        url: "https://pomf2.lain.la/f/qzy4u58k.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Electric Vedda Ensemble II",
+        url: "https://pomf2.lain.la/f/kh0x1e2a.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "日大1981.4",
+        url: "https://pomf2.lain.la/f/vhkz8vxk.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "青い月夜のバナナイカ",
+        url: "https://pomf2.lain.la/f/m1a4r9f5.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  }
+];
+        // Render links function
+        function renderLinks(filteredData = linksData) {
+            const container = document.getElementById('linksContainer');
+            container.innerHTML = '';
+
+            filteredData.forEach(category => {
+                const categoryHTML = `
+                    <div class="category-section">
+                        <h2 class="category-title">${category.category}</h2>
+                        <div class="links-grid">
+                            ${category.links.map(link => `
+                                <div class="link-card">
+                                    <a href="${link.url}" target="_blank" class="link-title">${link.title}</a>
+                                    <p class="link-description">${link.description}</p>
+                                    <div class="link-tags">
+                                        ${link.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += categoryHTML;
+            });
+
+            // Add event listeners to category titles for collapsing/expanding
+            document.querySelectorAll('.category-title').forEach(title => {
+                title.addEventListener('click', () => {
+                    const linksGrid = title.nextElementSibling;
+                    linksGrid.classList.toggle('collapsed');
+                    title.classList.toggle('collapsed');
+                });
+            });
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredData = linksData.map(category => ({
+                ...category,
+                links: category.links.filter(link =>
+                    link.title.toLowerCase().includes(searchTerm) ||
+                    link.description.toLowerCase().includes(searchTerm) ||
+                    link.tags.some(tag => tag.includes(searchTerm))
+                )
+            })).filter(category => category.links.length > 0);
+            
+            renderLinks(filteredData);
+        });
+
+        // Initial render
+        renderLinks();
+    </script>
+
+<!-- Home Button -->
+<a href="https://jcomicstampa.github.io/some-utils/" class="home-button" aria-label="Return to Home">
+    🏠
+</a>
+
+<style>
+.home-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #ff0000;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    text-decoration: none;
+    color: #0051ff;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.home-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    background: #2563eb;
+    color: white;
+}
+
+.home-button:active {
+    transform: scale(0.95);
+}
+</style>
+
+</body>
+</html>

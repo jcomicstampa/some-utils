@@ -62,12 +62,32 @@
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
             border-bottom: 2px solid #e2e8f0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .category-title::after {
+            content: '▼';
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .category-title.collapsed::after {
+            transform: rotate(-90deg); /* Rotate arrow when collapsed */
         }
 
         .links-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1rem;
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+            overflow: hidden;
+        }
+
+        .links-grid.collapsed {
+            opacity: 0;
+            max-height: 0;
         }
 
         .link-card {
@@ -191,6 +211,15 @@
                     </div>
                 `;
                 container.innerHTML += categoryHTML;
+            });
+
+            // Add event listeners to category titles for collapsing/expanding
+            document.querySelectorAll('.category-title').forEach(title => {
+                title.addEventListener('click', () => {
+                    const linksGrid = title.nextElementSibling;
+                    linksGrid.classList.toggle('collapsed');
+                    title.classList.toggle('collapsed');
+                });
             });
         }
 
