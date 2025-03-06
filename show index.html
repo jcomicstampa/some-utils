@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>show index</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --background-color: #f8fafc;
+            --text-color: #1e293b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .search-box {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        #searchInput {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        #searchInput:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .category-section {
+            margin: 2rem 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+        }
+
+        .category-title {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .category-title::after {
+            content: '▼';
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .category-title.collapsed::after {
+            transform: rotate(-90deg); /* Rotate arrow when collapsed */
+        }
+
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+            transition: opacity 0.3s ease, max-height 0.3s ease;
+            overflow: hidden;
+        }
+
+        .links-grid.collapsed {
+            opacity: 0;
+            max-height: 0;
+        }
+
+        .link-card {
+            padding: 1rem;
+            border-radius: 8px;
+            background: #fff;
+            transition: transform 0.2s ease;
+            border: 1px solid #e2e8f0;
+        }
+
+        .link-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .link-title {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .link-description {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .link-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #e2e8f0;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            color: #475569;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem 0.5rem;
+            }
+            
+            .category-section {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>show index</h1>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search links...">
+        </div>
+
+        <div id="linksContainer"></div>
+    </div>
+
+    <script>
+        // Link data structure
+        const linksData = [
+        {
+  category: "The New Woody Woodpecker Show",
+  links: [
+        {
+          title: "S01",
+          url: "https://buzzheavier.com/uzgndmzdpma5",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S02",
+          url: "https://buzzheavier.com/du0rvensyvbe",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S03",
+          url: "https://buzzheavier.com/rmsus018mpsf",
+          description: "",
+          tags: ["buzzheavier"]
+        }
+  ]
+},
+{
+  category: "The Walter Lantz Archive",
+  links: [
+        {
+          title: "S1929",
+          url: "https://buzzheavier.com/cvipee5kzhd1",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1930",
+          url: "https://buzzheavier.com/efp19s9uha9q",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1931",
+          url: "https://buzzheavier.com/hg0bb9ryu9nj",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1932",
+          url: "https://buzzheavier.com/yvj6v986xg2u",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1933",
+          url: "https://buzzheavier.com/voelov3ihr0t",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1934",
+          url: "https://buzzheavier.com/eofqolqh55rm",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1935",
+          url: "https://buzzheavier.com/qhufx2g6g9vr",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1936",
+          url: "https://buzzheavier.com/a2i9f65twi1p",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1937",
+          url: "https://buzzheavier.com/kp7a36kor4u0",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1938",
+          url: "https://buzzheavier.com/oqgzlhfp8l6q",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1939",
+          url: "https://buzzheavier.com/0hltcoiykhcs",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1940",
+          url: "https://buzzheavier.com/jlbvuktx8z96",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1941",
+          url: "https://buzzheavier.com/zsckye88tmg9",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1942",
+          url: "https://buzzheavier.com/1znin7adv6b8",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1943",
+          url: "https://buzzheavier.com/xe2aex5lucr9",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1944",
+          url: "https://buzzheavier.com/wtgz6sxtar4e",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1945",
+          url: "https://buzzheavier.com/4b0lxn9owvgm",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1946",
+          url: "https://buzzheavier.com/trlazzigti49",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1947",
+          url: "https://buzzheavier.com/pyd892hnacj2",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1948",
+          url: "https://buzzheavier.com/bprj38lgyc8u",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1949",
+          url: "https://buzzheavier.com/vgw3idlvfvjj",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1951",
+          url: "https://buzzheavier.com/l8u6lv8sap1k",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1952",
+          url: "https://buzzheavier.com/f7wsk8czne4f",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1953",
+          url: "https://buzzheavier.com/qbt3amavrjrx",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1954",
+          url: "https://buzzheavier.com/1wk7msh9b4jr",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1955",
+          url: "https://buzzheavier.com/qmlwuphwi83t",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1956",
+          url: "https://buzzheavier.com/pvh83p05bpp7",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1957",
+          url: "https://buzzheavier.com/h8ub8dr4uf8r",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1958",
+          url: "https://buzzheavier.com/jkik9rrelpae",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1959",
+          url: "https://buzzheavier.com/7dhgf71dzmwh",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1960",
+          url: "https://buzzheavier.com/arj9vbjfv9lr",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1961",
+          url: "https://buzzheavier.com/3bz19al76z1k",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1962",
+          url: "https://buzzheavier.com/3csi09jr7nc6",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1963",
+          url: "https://buzzheavier.com/ssj24i1njn6o",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1964",
+          url: "https://buzzheavier.com/lkqdil071bxt",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1965",
+          url: "https://buzzheavier.com/jv4evtybkmfg",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1966",
+          url: "https://buzzheavier.com/n3hrf7mmupan",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1967",
+          url: "https://buzzheavier.com/ux774rdqqfet",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1968",
+          url: "https://buzzheavier.com/5souxi9v5hgt",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1969",
+          url: "https://buzzheavier.com/b55u35nc27au",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1970",
+          url: "https://buzzheavier.com/goumtyktocw8",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1971",
+          url: "https://buzzheavier.com/9l9g1i82tuec",
+          description: "",
+          tags: ["buzzheavier"]
+        },
+        {
+          title: "S1972",
+          url: "https://buzzheavier.com/pfxc23opgwxc",
+          description: "",
+          tags: ["buzzheavier"]
+        }
+  ]
+},
+{
+  category: "Uzumaki (2000)",
+  links: [
+        {
+          title: "Uzumaki (2000)",
+          url: "https://buzzheavier.com/y9vme9cqc95n",
+          description: "",
+          tags: ["buzzheavier", "movie"]
+        }
+  ]
+},
+];
+        // Render links function
+        function renderLinks(filteredData = linksData) {
+            const container = document.getElementById('linksContainer');
+            container.innerHTML = '';
+
+            filteredData.forEach(category => {
+                const categoryHTML = `
+                    <div class="category-section">
+                        <h2 class="category-title">${category.category}</h2>
+                        <div class="links-grid">
+                            ${category.links.map(link => `
+                                <div class="link-card">
+                                    <a href="${link.url}" target="_blank" class="link-title">${link.title}</a>
+                                    <p class="link-description">${link.description}</p>
+                                    <div class="link-tags">
+                                        ${link.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += categoryHTML;
+            });
+
+            // Add event listeners to category titles for collapsing/expanding
+            document.querySelectorAll('.category-title').forEach(title => {
+                title.addEventListener('click', () => {
+                    const linksGrid = title.nextElementSibling;
+                    linksGrid.classList.toggle('collapsed');
+                    title.classList.toggle('collapsed');
+                });
+            });
+        }
+
+        // Search functionality
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const filteredData = linksData.map(category => ({
+                ...category,
+                links: category.links.filter(link =>
+                    link.title.toLowerCase().includes(searchTerm) ||
+                    link.description.toLowerCase().includes(searchTerm) ||
+                    link.tags.some(tag => tag.includes(searchTerm))
+                )
+            })).filter(category => category.links.length > 0);
+            
+            renderLinks(filteredData);
+        });
+
+        // Initial render
+        renderLinks();
+    </script>
+
+<!-- Home Button -->
+<a href="https://jcomicstampa.github.io/some-utils/" class="home-button" aria-label="Return to Home">
+    🏠
+</a>
+
+<style>
+.home-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: #ff0000;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    text-decoration: none;
+    color: #0051ff;
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.home-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    background: #2563eb;
+    color: white;
+}
+
+.home-button:active {
+    transform: scale(0.95);
+}
+</style>
+
+</body>
+</html>
