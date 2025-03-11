@@ -140,14 +140,48 @@
                 padding: 1rem;
             }
         }
+
+        .search-box {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+        }
+
+        #collapseAllBtn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        #collapseAllBtn:hover {
+            background-color: #1d4ed8;
+        }
+
+        @media (max-width: 768px) {
+            .search-box {
+                flex-direction: column;
+            }
+            
+            #collapseAllBtn {
+                padding: 0.75rem 1rem;
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>music index</h1>
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Search links...">
-        </div>
+          <input type="text" id="searchInput" placeholder="Search links...">
+          <button id="collapseAllBtn">Collapse All</button>
+      </div>
 
         <div id="linksContainer"></div>
     </div>
@@ -3879,6 +3913,33 @@
                 }
             }
         }
+
+                // Collapse All functionality
+                document.getElementById('collapseAllBtn').addEventListener('click', () => {
+            const allTitles = document.querySelectorAll('.category-title');
+            const allGrids = document.querySelectorAll('.links-grid');
+            const isCollapsed = allTitles[0]?.classList.contains('collapsed');
+
+            allTitles.forEach(title => {
+                if (!isCollapsed) {
+                    title.classList.add('collapsed');
+                } else {
+                    title.classList.remove('collapsed');
+                }
+            });
+
+            allGrids.forEach(grid => {
+                if (!isCollapsed) {
+                    grid.classList.add('collapsed');
+                } else {
+                    grid.classList.remove('collapsed');
+                }
+            });
+
+            // Update button text
+            const btn = document.getElementById('collapseAllBtn');
+            btn.textContent = isCollapsed ? 'Collapse All' : 'Expand All';
+        });
 
         // Initial render and hash handling
         renderLinks();
