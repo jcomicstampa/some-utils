@@ -3823,14 +3823,25 @@
     ]
   }
 ];
+        // Slugify function for creating valid IDs
+        function slugify(text) {
+            return text.toString().toLowerCase()
+                .replace(/\s+/g, '-')       // Replace spaces with -
+                .replace(/[^\w-]+/g, '')   // Remove all non-word chars
+                .replace(/--+/g, '-')      // Replace multiple - with single -
+                .replace(/^-+/, '')        // Trim - from start of text
+                .replace(/-+$/, '');       // Trim - from end of text
+        }
+
         // Render links function
         function renderLinks(filteredData = linksData) {
             const container = document.getElementById('linksContainer');
             container.innerHTML = '';
 
             filteredData.forEach(category => {
+                const categoryId = slugify(category.category); // Create a URL-friendly ID
                 const categoryHTML = `
-                    <div class="category-section">
+                    <div class="category-section" id="${categoryId}"> <!-- Add ID here -->
                         <h2 class="category-title">${category.category}</h2>
                         <div class="links-grid">
                             ${category.links.map(link => `
@@ -3848,7 +3859,7 @@
                 container.innerHTML += categoryHTML;
             });
 
-            // Add event listeners to category titles for collapsing/expanding
+            // Add event listeners to category titles
             document.querySelectorAll('.category-title').forEach(title => {
                 title.addEventListener('click', () => {
                     const linksGrid = title.nextElementSibling;
@@ -3858,17 +3869,37 @@
             });
         }
 
-        // Search functionality
+        // Handle hash navigation
+        function handleHash() {
+            const hash = window.location.hash.substring(1); // Remove the '#' from the hash
+            if (hash) {
+                const element = document.getElementById(hash); // Find the element with the matching ID
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' }); // Scroll to the element
+                }
+            }
+        }
+
+        // Initial render and hash handling
+        renderLinks();
+        handleHash(); // Handle hash on page load
+        window.addEventListener('hashchange', handleHash); // Handle hash changes
+
         document.getElementById('searchInput').addEventListener('input', (e) => {
             const searchTerm = e.target.value.toLowerCase();
-            const filteredData = linksData.map(category => ({
-                ...category,
-                links: category.links.filter(link =>
-                    link.title.toLowerCase().includes(searchTerm) ||
-                    link.description.toLowerCase().includes(searchTerm) ||
-                    link.tags.some(tag => tag.includes(searchTerm))
-                )
-            })).filter(category => category.links.length > 0);
+            const filteredData = linksData.map(category => {
+                const categoryMatches = category.category.toLowerCase().includes(searchTerm); // Check if category matches
+                return {
+                    ...category,
+                    links: categoryMatches 
+                        ? category.links // Show all links if category matches
+                        : category.links.filter(link =>
+                            link.title.toLowerCase().includes(searchTerm) ||
+                            link.description.toLowerCase().includes(searchTerm) ||
+                            link.tags.some(tag => tag.includes(searchTerm))
+                        )
+                };
+            }).filter(category => category.links.length > 0); // Only show categories with matching links
             
             renderLinks(filteredData);
         });
