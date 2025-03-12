@@ -355,6 +355,11 @@
             },
             // Add new categories here
         ];
+
+        function normalize(str) {
+            return str.toLowerCase().replace(/[\s\-_]/g, ''); // Remove spaces, hyphens, underscores
+        }
+
         // Slugify function for creating valid IDs
         function slugify(text) {
             return text.toString().toLowerCase()
@@ -445,20 +450,20 @@
         window.addEventListener('hashchange', handleHash); // Handle hash changes
 
         document.getElementById('searchInput').addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
+            const searchTerm = normalize(e.target.value);
             const filteredData = linksData.map(category => {
-                const categoryMatches = category.category.toLowerCase().includes(searchTerm); // Check if category matches
+                const categoryMatches = normalize(category.category).includes(searchTerm);
                 return {
                     ...category,
                     links: categoryMatches 
-                        ? category.links // Show all links if category matches
+                        ? category.links 
                         : category.links.filter(link =>
-                            link.title.toLowerCase().includes(searchTerm) ||
-                            link.description.toLowerCase().includes(searchTerm) ||
-                            link.tags.some(tag => tag.includes(searchTerm))
+                            normalize(link.title).includes(searchTerm) ||
+                            normalize(link.description).includes(searchTerm) ||
+                            link.tags.some(tag => normalize(tag).includes(searchTerm))
                         )
                 };
-            }).filter(category => category.links.length > 0); // Only show categories with matching links
+            }).filter(category => category.links.length > 0);
             
             renderLinks(filteredData);
         });
