@@ -3946,6 +3946,7 @@
     ]
   }
 ];
+
         // Slugify function for creating valid IDs
         function slugify(text) {
             return text.toString().toLowerCase()
@@ -3954,6 +3955,11 @@
                 .replace(/--+/g, '-')      // Replace multiple - with single -
                 .replace(/^-+/, '')        // Trim - from start of text
                 .replace(/-+$/, '');       // Trim - from end of text
+        }
+
+        function getQueryParam(name) {
+          const urlParams = new URLSearchParams(window.location.search);
+          return urlParams.get(name);
         }
 
         // Render links function
@@ -4046,7 +4052,7 @@
                         : category.links.filter(link =>
                             link.title.toLowerCase().includes(searchTerm) ||
                             link.description.toLowerCase().includes(searchTerm) ||
-                            link.tags.some(tag => tag.includes(searchTerm))
+                            link.tags.some(tag => tag.toLowerCase().includes(searchTerm))
                         )
                 };
             }).filter(category => category.links.length > 0); // Only show categories with matching links
@@ -4054,8 +4060,46 @@
             renderLinks(filteredData);
         });
 
-        // Initial render
+          // Check for URL query parameter "q"
+        const initialSearchQuery = getQueryParam('q');
+        if (initialSearchQuery) {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.value = initialSearchQuery;
+            // Trigger the search automatically
+            const event = new Event('input');
+            searchInput.dispatchEvent(event);
+        }
+
+        function initializePage() {
         renderLinks();
+        
+        const initialSearchQuery = getQueryParam('q');
+        if (initialSearchQuery) {
+            const searchInput = document.getElementById('searchInput');
+            searchInput.value = initialSearchQuery;
+            
+            const filteredData = linksData.map(category => {
+                const searchTerm = initialSearchQuery.toLowerCase();
+                const categoryMatches = category.category.toLowerCase().includes(searchTerm);
+                return {
+                    ...category,
+                    links: categoryMatches ? category.links : category.links.filter(link => {
+                        return link.title.toLowerCase().includes(searchTerm) ||
+                               link.description.toLowerCase().includes(searchTerm) ||
+                               link.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+                    })
+                };
+            }).filter(category => category.links.length > 0);
+            
+            renderLinks(filteredData);
+        }
+
+        handleHash();
+    }
+
+    // Initial page load
+    initializePage();
+    window.addEventListener('hashchange', handleHash);
     </script>
 
 <!-- Home Button -->
