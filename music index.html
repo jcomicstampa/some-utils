@@ -1994,6 +1994,71 @@
     ]
   },
   {
+    category: "Ättestupa",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/t276xx975z9s",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "1867",
+        url: "https://pomf2.lain.la/f/t36ig3ul.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Att korsa den flod som kommer dränka oss alla",
+        url: "https://pomf2.lain.la/f/bbcuvgow.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Ättestupa",
+        url: "https://pomf2.lain.la/f/xsta3nab.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Begraven mot norr",
+        url: "https://pomf2.lain.la/f/y8kjh4n2.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Burning Hell Vol. II",
+        url: "https://pomf2.lain.la/f/t2ddw2d9.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Lavåret",
+        url: "https://pomf2.lain.la/f/3fuwmag.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Musik för tomma rum",
+        url: "https://pomf2.lain.la/f/gmgup2w.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Stenstans fördärv - Mitt blod, min kropp",
+        url: "https://pomf2.lain.la/f/5adhevde.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Vattnet drog sig tillbaka, stenarna blev synliga",
+        url: "https://pomf2.lain.la/f/w8sv0nov.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
     category: "Audioharm",
     links: [
       {
@@ -4307,71 +4372,6 @@
     ]
   },
   {
-    category: "Ättestupa",
-    links: [
-      {
-        title: "Folder",
-        url: "https://buzzheavier.com/t276xx975z9s",
-        description: "",
-        tags: ["buzzheavier"]
-      },
-      {
-        title: "1867",
-        url: "https://pomf2.lain.la/f/t36ig3ul.7z",
-        description: "",
-        tags: ["FLAC", "pomf"]
-      },
-      {
-        title: "Att korsa den flod som kommer dränka oss alla",
-        url: "https://pomf2.lain.la/f/bbcuvgow.7z",
-        description: "",
-        tags: ["MP3", "pomf"]
-      },
-      {
-        title: "Ättestupa",
-        url: "https://pomf2.lain.la/f/xsta3nab.7z",
-        description: "",
-        tags: ["FLAC", "pomf"]
-      },
-      {
-        title: "Begraven mot norr",
-        url: "https://pomf2.lain.la/f/y8kjh4n2.7z",
-        description: "",
-        tags: ["FLAC", "pomf"]
-      },
-      {
-        title: "Burning Hell Vol. II",
-        url: "https://pomf2.lain.la/f/t2ddw2d9.7z",
-        description: "",
-        tags: ["MP3", "pomf"]
-      },
-      {
-        title: "Lavåret",
-        url: "https://pomf2.lain.la/f/3fuwmag.7z",
-        description: "",
-        tags: ["MP3", "pomf"]
-      },
-      {
-        title: "Musik för tomma rum",
-        url: "https://pomf2.lain.la/f/gmgup2w.7z",
-        description: "",
-        tags: ["FLAC", "pomf"]
-      },
-      {
-        title: "Stenstans fördärv - Mitt blod, min kropp",
-        url: "https://pomf2.lain.la/f/5adhevde.7z",
-        description: "",
-        tags: ["MP3", "pomf"]
-      },
-      {
-        title: "Vattnet drog sig tillbaka, stenarna blev synliga",
-        url: "https://pomf2.lain.la/f/w8sv0nov.7z",
-        description: "",
-        tags: ["FLAC", "pomf"]
-      }
-    ]
-  },
-  {
     category: "†",
     links: [
       {
@@ -4391,7 +4391,7 @@
 ];
 
         function normalize(str) {
-            return str.toLowerCase().replace(/[\s\-_]/g, ''); // Remove spaces, hyphens, underscores
+            return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // Remove spaces, hyphens, underscores, punctuation
         }
 
         // Slugify function for creating valid IDs
