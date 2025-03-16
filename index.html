@@ -357,7 +357,7 @@
         ];
 
         function normalize(str) {
-            return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); // Remove spaces, hyphens, underscores, punctuation
+            return str.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[\s\-\_\,\.\;]+/g, ''); // Remove spaces, hyphens, underscores, punctuation
         }
 
         // Slugify function for creating valid IDs
