@@ -173,9 +173,30 @@
                 width: 100%;
             }
         }
+
+        .category-counter {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.35rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        z-index: 1000;
+        /* Small size and fixed positioning */
+    }
+
     </style>
 </head>
+
+
 <body>
+  <div class="category-counter">
+    Shows / Movies archived: <span id="categoryCount">0</span>
+  </div>
     <div class="container">
         <h1>show index</h1>
         <div class="search-box">
@@ -779,8 +800,16 @@
             renderLinks(filteredData);
         });
 
+    // Update category counter
+    function updateCategoryCounter() {
+        document.getElementById('categoryCount').textContent = linksData.length;
+    }        
+
         // Initial render
         renderLinks();
+      
+    // Call this after initial render
+    updateCategoryCounter();    
     </script>
 
 <!-- Home Button -->

@@ -142,10 +142,10 @@
         }
 
         .search-box {
-        display: flex;
-        gap: 0.5rem;
-        margin-bottom: 2rem;
-        }
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            }
 
         #collapseAllBtn {
             background-color: var(--primary-color);
@@ -173,19 +173,36 @@
                 width: 100%;
             }
         }
+        .category-counter {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.35rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        z-index: 1000;
+        /* Small size and fixed positioning */
+    }
     </style>
 </head>
+
+
 <body>
+  <div class="category-counter">
+    Artists archived: <span id="categoryCount">0</span>
+  </div>
     <div class="container">
         <h1>music index</h1>
         <div class="search-box">
           <input type="text" id="searchInput" placeholder="Search links...">
           <button id="collapseAllBtn">Collapse All</button>
       </div>
-
         <div id="linksContainer"></div>
     </div>
-
     <script>
         // Link data structure
         const linksData = [
@@ -2471,6 +2488,71 @@
     ]
   },
   {
+    category: "David Tibet",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/rdvguzyfivl1",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Dead Memory",
+        url: "https://fileditchfiles.me/file.php?f=/s21/OPoTjJmdvoBKIwcxOUQO.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "Ferelith",
+        url: "https://fileditchfiles.me/file.php?f=/s21/AhopcfwvjEKVvwMECu.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "Fontelautus",
+        url: "https://fileditchfiles.me/file.php?f=/s21/tHiBNqzKnwXYfvDpimEz.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "Musical Pumpkin Cottage",
+        url: "https://fileditchfiles.me/file.php?f=/s21/tzEuTqZWbjLEXZRODIVH.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "Octopus",
+        url: "https://fileditchfiles.me/file.php?f=/s21/gEiWvmaMSiPBKpITdTCv.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "Sing Omega",
+        url: "https://fileditchfiles.me/file.php?f=/s21/PgijfqOyrtLtKqCInovF.7z",
+        description: "",
+        tags: ["MP3", "fileditch"]
+      },
+      {
+        title: "The Sadness of Things",
+        url: "https://fileditchfiles.me/file.php?f=/s21/sqKrxmpIXJGRVlhiPNYK.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "The Threat of Memory",
+        url: "https://fileditchfiles.me/file.php?f=/b53/zDjDzpcgWbiUppHQVBjD.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "The Threats of Memories",
+        url: "https://fileditchfiles.me/file.php?f=/b53/LblFQldEsuuUSyjVUAP.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      }
+    ]
+  },
+  {
     category: "Eartheater",
     links: [
       {
@@ -2524,6 +2606,59 @@
     ]
   },
   {
+    category: "Elend",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/xaohcqm4xahn",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "A World in Their Screams",
+        url: "https://pomf2.lain.la/f/f5u6nfr5.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Leçons de ténèbres",
+        url: "https://pomf2.lain.la/f/w2j14vy1.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Les ténèbres du dehors",
+        url: "https://pomf2.lain.la/f/2tmjte8o.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Sunwar the Dead",
+        url: "https://pomf2.lain.la/f/o3nd2swf.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "The Umbersun",
+        url: "https://pomf2.lain.la/f/0niakv2c.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Weeping Nights",
+        url: "https://pomf2.lain.la/f/1bs8oao4.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Winds Devouring Men",
+        url: "https://pomf2.lain.la/f/pirsort.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
     category: "Erotikens Historie",
     links: [
       {
@@ -2570,6 +2705,41 @@
     ]
   },
   {
+    category: "Flotation Toy Warning",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/ofeh2jjyhmiu",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Bluffer's Guide to the Flight Deck",
+        url: "https://pomf2.lain.la/f/2bybdayc.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "I Remember Trees",
+        url: "https://pomf2.lain.la/f/etesi7u9.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "The Machine That Made Us",
+        url: "https://pomf2.lain.la/f/hhm7phk7.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "The Special Tape",
+        url: "https://pomf2.lain.la/f/f03vr58b.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
     category: "Frankenstein",
     links: [
       {
@@ -2587,6 +2757,202 @@
     ]
   },
   {
+    category: "Frozen Faces",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/c8adk1r1o404",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Broken Sounds of a Dying Culture",
+        url: "https://pomf2.lain.la/f/207rp0cv.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "In Order to Confuse",
+        url: "https://pomf2.lain.la/f/rgsd73v.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "They Who Became Enemies to Their Ancestors",
+        url: "https://pomf2.lain.la/f/vhjt32lv.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "不失者 [Fushitsusha]",
+    links: [
+      {
+        title: "Folder Part 1",
+        url: "https://buzzheavier.com/jjfruq69rqfp",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Folder Part 2",
+        url: "https://buzzheavier.com/cgea3jbij73o",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "完結されもしない死",
+        url: "https://pomf2.lain.la/f/v2vqnpis.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "A Document Film of Keiji Haino",
+        url: "https://pomf2.lain.la/f/8q2taq23.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "もう少しこのまま",
+        url: "https://pomf2.lain.la/f/8b6oajfx.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "寓意的な誤解",
+        url: "https://pomf2.lain.la/f/zt37z5gk.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "不失者",
+        url: "https://pomf2.lain.la/f/sqoc7zcu.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Gold Blood",
+        url: "https://pomf2.lain.la/f/0n9zbp8r.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "光となづけよう",
+        url: "https://pomf2.lain.la/f/2gtn2q1z.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "I Saw It! That Which Before I Could Only Sense",
+        url: "https://pomf2.lain.la/f/9iw0mark.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "永遠の方が 先に手を出したのさ",
+        url: "https://pomf2.lain.la/f/6dhettkl.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Live",
+        url: "https://pomf2.lain.la/f/78kfe7uf.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Live at Tonic, NYC, 11.16.2002",
+        url: "https://pomf2.lain.la/f/o60sa92j.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "まぶしいいたずらな祈り",
+        url: "https://pomf2.lain.la/f/8autwu.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "まだ 温かいうちの この今に  すべての謎を 注ぎ込こもう",
+        url: "https://pomf2.lain.la/f/g9afwo.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "名前を つけないで ほしい 名前を つけて しまうと 全てで なくなって  しまうから",
+        url: "https://pomf2.lain.la/f/xon2z5h.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Nothing Changes, No One Can Change Anything, I Am Ever-Changing, Only You Can Change Yourself",
+        url: "https://fileditchfiles.me/file.php?f=/b53/qlJlJDuUmDxKDTUdKAqu.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "Origin's Hesitation",
+        url: "https://pomf2.lain.la/f/rhtrpp3a.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "悲愴",
+        url: "https://pomf2.lain.la/f/n90qyjj4.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Purple Trap (The Wound That Was Given Birth to Must Be Bigger Than the Wound That Gave Birth)",
+        url: "https://pomf2.lain.la/f/7g84lyzp.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Radio Code",
+        url: "https://pomf2.lain.la/f/itk1e6td.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Secret Black Box",
+        url: "https://pomf2.lain.la/f/j19w4a5t.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "The Caution Appears",
+        url: "https://pomf2.lain.la/f/y7szivr.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "来たる時",
+        url: "https://pomf2.lain.la/f/k94ukvn.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "すでに用意されていた想い",
+        url: "https://pomf2.lain.la/f/3iyqtrzy.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Withdrawe, This Sable Disclosure Ere Devot'd",
+        url: "https://pomf2.lain.la/f/98j2qu5.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "欠片: Unheard Pieces of the Late XXth & Early XXIst Centuries",
+        url: "https://pomf2.lain.la/f/xuwahyy.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
     category: "Gdansk",
     links: [
       {
@@ -2600,6 +2966,119 @@
         url: "https://small.fileditchstuff.me/s19/XcDsxUReKEOGzXMubH.7z",
         description: "",
         tags: ["MP3", "fileditch"]
+      }
+    ]
+  },
+  {
+    category: "芸能山城組 [Geinoh Yamashirogumi]",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/edrbpio2v17l",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "アフリカ幻唱 (Africa Genjoh)",
+        url: "https://pomf2.lain.la/f/7gf2edg.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Akira",
+        url: "https://pomf2.lain.la/f/assgr3x2.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "地の響: 東ヨーロッパを歌う (Chi no Hibiki)",
+        url: "https://pomf2.lain.la/f/6o242d7i.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "翠星交響楽 (Ecophony Gaia)",
+        url: "https://pomf2.lain.la/f/eetdi4wq.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "輪廻交響楽 (Ecophony Rinne)",
+        url: "https://pomf2.lain.la/f/dyqjtmeg.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "芸能山城組入門 (Geinō Yamashirogumi Nyūmon / Best Selection of Geinoh Yamashiro Gumi)",
+        url: "https://pomf2.lain.la/f/iacw5p1e.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "地の響 (Ji No Hibiki)",
+        url: "https://pomf2.lain.la/f/l6w15rfo.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "ライブ ''開かれた合唱'' 十年の展開 (Live ''Hirakareta Gassho'' Junen No Tenkai)",
+        url: "https://pomf2.lain.la/f/dj0cr8cz.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "恐山 (Osorezan) / 銅之剣舞 (Dō no Kenbai)",
+        url: "https://pomf2.lain.la/f/v9ixnr2b.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "シルクロード幻唱 (Selections From Folk Music on Silkroad)",
+        url: "https://pomf2.lain.la/f/pqquxbpt.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "少年達への地球讃歌 (Shonentachi e no Chikyusanka)",
+        url: "https://pomf2.lain.la/f/hajngzqj.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "シルクロードの玄唱 (Silk Road Genjoh I, II Byzantine No Hibiki)",
+        url: "https://pomf2.lain.la/f/o4coe0o.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "ビザンチンの響 (Sound of the Byzantine)",
+        url: "https://pomf2.lain.la/f/ezkw4f37.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Symphonic Suite AKIRA",
+        url: "https://pomf2.lain.la/f/r1jefi3.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Symphonic Suite AKIRA 2002",
+        url: "https://fileditchfiles.me/file.php?f=/b53/XIGTbKdIzZweMdhswbM.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "やまと幻唱 (Yamato Gensho)",
+        url: "https://pomf2.lain.la/f/0nnwknr.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "黄金鱗讃揚 (Ōgonrin Sanyō)",
+        url: "https://pomf2.lain.la/f/r6ca6cz.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
       }
     ]
   },
@@ -2777,6 +3256,59 @@
     ]
   },
   {
+    category: "Giles Corey",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/nvdr9s67reyi",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "A Landless Earth [Bootleg]",
+        url: "https://pomf2.lain.la/f/hap3ubaq.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Deconstructionist",
+        url: "https://pomf2.lain.la/f/4z7zv02.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Giles Corey",
+        url: "https://pomf2.lain.la/f/qkso5xsx.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Hinterkaifeck",
+        url: "https://pomf2.lain.la/f/7dn4zs62.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "In Spiritual Exile - Collected Recordings",
+        url: "https://pomf2.lain.la/f/xam07o3l.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Live in the Middle of Nowhere",
+        url: "https://pomf2.lain.la/f/1host7fi.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Santa Is Real: The Enemies List Christmas Album",
+        url: "https://pomf2.lain.la/f/gkltpnvk.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
     category: "Gordon Ashworth",
     links: [
       {
@@ -2830,6 +3362,23 @@
     ]
   },
   {
+    category: "Gulaggh",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/iko05uxkuxcd",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Vorkuta",
+        url: "https://pomf2.lain.la/f/j5ira1l.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
     category: "Heltir",
     links: [
       {
@@ -2876,6 +3425,23 @@
       {
         title: "The Butterfly Fart Album",
         url: "https://pomf2.lain.la/f/br763o6p.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Howling of Himalaya",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/o0lydo9lktxp",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Constructive Music 1990",
+        url: "https://pomf2.lain.la/f/svo2b2yt.7z",
         description: "",
         tags: ["MP3", "pomf"]
       }
@@ -2965,6 +3531,29 @@
     ]
   },
   {
+    category: "Johnny Hazard",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/0cj26zoktlpn",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Useless",
+        url: "https://pomf2.lain.la/f/xvduua4x.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Compilation Tracks",
+        url: "https://pomf2.lain.la/f/h9mlrwua.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
     category: "井内賢吾 [Kengo Iuchi]",
     links: [
       {
@@ -3024,6 +3613,258 @@
     ]
   },
   {
+    category: "LAShTAL",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/9t7goj0n0j84",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Thoum Aesh Neith",
+        url: "https://pomf2.lain.la/f/mflthgkt.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Libertinage",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/8ekhxbup0nho",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Quick Cum",
+        url: "https://pomf2.lain.la/f/74modzsq.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Lina Baby Doll",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/nzr3inpjx663",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Position Baby Doll",
+        url: "https://pomf2.lain.la/f/iw8xxh90.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "The Very Top of Lina Baby Doll",
+        url: "https://pomf2.lain.la/f/hw1aztnt.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "LSD March",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/6epe2w6gj4ap",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "1997-2001 at Mushroom",
+        url: "https://pomf2.lain.la/f/e7m9bsaa.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "5 CD-R Box Set",
+        url: "https://pomf2.lain.la/f/vbmosews.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Constellation of Tragedy",
+        url: "https://pomf2.lain.la/f/q6i59yje.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Empty Rubious Red",
+        url: "https://pomf2.lain.la/f/induy0v6.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Jurando",
+        url: "https://pomf2.lain.la/f/krx2sxdd.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Kanashimino Bishounen",
+        url: "https://pomf2.lain.la/f/af4u44dh.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Live",
+        url: "https://pomf2.lain.la/f/7dkq5eso.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Live at the AMS",
+        url: "https://pomf2.lain.la/f/2rtj3z1i.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Long Slow Distance",
+        url: "https://pomf2.lain.la/f/m1f01mr.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "LSD March",
+        url: "https://pomf2.lain.la/f/au2mg268.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "LSD March / Mama Baer",
+        url: "https://pomf2.lain.la/f/9onz7shc.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "LSD Pond",
+        url: "https://pomf2.lain.la/f/pp6m57j6.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Museu do Chiado Lisbon",
+        url: "https://pomf2.lain.la/f/n2wgp9n3.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Nikutai no Tubomi",
+        url: "https://pomf2.lain.la/f/0sris5c.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Republic of Iraq",
+        url: "https://pomf2.lain.la/f/joqr9nk4.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "漏刻の炎 (Roukoku no Honoo)・凛然 (Rinzen)・雨 (Ame)・嵐の青春 (Arashi no Seisyun)",
+        url: "https://pomf2.lain.la/f/6ou37b03.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Shindara Jigoku",
+        url: "https://pomf2.lain.la/f/wnhvtrwb.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "突然炎のごとく (Suddenly, Like Flames)",
+        url: "https://pomf2.lain.la/f/kgmmlrco.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "The Night",
+        url: "https://pomf2.lain.la/f/i39ayj3b.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Under Milk Wood",
+        url: "https://pomf2.lain.la/f/prhg1nvo.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Untitled",
+        url: "https://pomf2.lain.la/f/ihhwwaj.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Uretakumo Nakunarutorika",
+        url: "https://pomf2.lain.la/f/9um2584.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Usine-4 Geneve",
+        url: "https://pomf2.lain.la/f/e2xn2idy.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "君の歌を聴いて僕は悪魔になった",
+        url: "https://pomf2.lain.la/f/i6jl1thq.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Magthea",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/d3a41zc25lm1",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Magthea and Insanity",
+        url: "https://pomf2.lain.la/f/l5np7mmb.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Saxapulations",
+        url: "https://pomf2.lain.la/f/f0o6qdym.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Mental Measuretech",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/hce64nmbplht",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Songs From Neuropa",
+        url: "https://pomf2.lain.la/f/14cwilk.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
     category: "Meret Becker",
     links: [
       {
@@ -3059,6 +3900,47 @@
     ]
   },
   {
+    category: "Мокрица [Mokritsa]",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/4qm1in6bav5v",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "4",
+        url: "https://pomf2.lain.la/f/dr9nrcsh.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Быть другим",
+        url: "https://pomf2.lain.la/f/s8v9b0mt.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Душа больная",
+        url: "https://pomf2.lain.la/f/a56uvwlm.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Не могу уснуть",
+        url: "https://pomf2.lain.la/f/jhn91du.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Стрекоза",
+        url: "https://pomf2.lain.la/f/m08ydffg.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
     category: "Musta Risti",
     links: [
       {
@@ -3072,6 +3954,116 @@
         url: "https://pomf2.lain.la/f/m6jk1n4.7z",
         description: "",
         tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "NEU!",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/un0qxgvcvplh",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Neu! '72 Live! In Düsseldorf",
+        url: "https://pomf2.lain.la/f/e9z7h41.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Black Forest Gateau",
+        url: "https://pomf2.lain.la/f/udcaaaok.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "NEU!",
+        url: "https://pomf2.lain.la/f/rcjrrrf.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "NEU! '72 Non-Public Test",
+        url: "https://pomf2.lain.la/f/mhku635g.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Neu! '75",
+        url: "https://pomf2.lain.la/f/sxlga4d7.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "NEU! '86",
+        url: "https://pomf2.lain.la/f/ov6spn89.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "NEU! 2",
+        url: "https://pomf2.lain.la/f/gequso7y.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "NEU! 4",
+        url: "https://pomf2.lain.la/f/ww7dc0w3.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Operation Miranda",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/lnea26hkprml",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Children's Pornography Review Vol. 1",
+        url: "https://pomf2.lain.la/f/lr9yjidr.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Organized Resistance",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/t3ud77t8qnxe",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Day of the Rope",
+        url: "https://pomf2.lain.la/f/b5aij4t6.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Passione Nera",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/x5c9anovidyl",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Research EP",
+        url: "https://pomf2.lain.la/f/vh3i5438.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
       }
     ]
   },
@@ -3242,6 +4234,100 @@
         url: "https://pomf2.lain.la/f/pstbfmii.7z",
         description: "",
         tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Radio Werewolf",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/7avtmumcg9f4",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Boots / Witchcraft",
+        url: "https://pomf2.lain.la/f/zqgiqgws.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Bring Me the Head of Geraldo Rivera!",
+        url: "https://pomf2.lain.la/f/ynefv7mp.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Love Conquers All",
+        url: "https://pomf2.lain.la/f/i1xw4h4p.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Songs for the End of the World",
+        url: "https://pomf2.lain.la/f/3lunee6.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "The Fiery Summons",
+        url: "https://pomf2.lain.la/f/unkffddm.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "The First Official Radio Werewolf Album",
+        url: "https://pomf2.lain.la/f/unkffddm.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "The Lightning and the Sun",
+        url: "https://pomf2.lain.la/f/kmv4ntby.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "The Vinyl Solution (Analog Artifacts: Ritual Instrumentals and Undercover Versions)",
+        url: "https://pomf2.lain.la/f/ak8ujhc.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Rainer Riehn",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/rjz7az98pf7q",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Atlas eclipticalis; Winter Music; Cartridge Music / Glossolalie",
+        url: "https://pomf2.lain.la/f/nxuvvwnv.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Chants de Maldoror: Electronic Music From the Institute of Sonology, Utrecht, 1965-71",
+        url: "https://pomf2.lain.la/f/wft05y.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Concert for Piano and Orchestra; Credo in Us; Imaginary Landscape No. 1; Rozart Mix; Suite for Toy Piano; Music for Carillon",
+        url: "https://pomf2.lain.la/f/37hzs3gh.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Music Before Revolution",
+        url: "https://pomf2.lain.la/f/9q8jo6fz.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
       }
     ]
   },
@@ -3543,6 +4629,53 @@
     ]
   },
   {
+    category: "Sand",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/wyrz7cdluvv4",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Desert Navigation",
+        url: "https://fileditchfiles.me/file.php?f=/s21/ryUDIKjrbFeKcvrUXCS.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "Golem",
+        url: "https://fileditchfiles.me/file.php?f=/s21/KNKjJDaOPMNwMbbqWlXG.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "His First Steps",
+        url: "https://fileditchfiles.me/file.php?f=/s21/uPktZJTDqZnCdapdyNXj.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "North Atlantic Raven",
+        url: "https://fileditchfiles.me/file.php?f=/s21/LWcRMAWdDZxYyOcAcNOR.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "Sylph Ballet",
+        url: "https://fileditchfiles.me/file.php?f=/s21/aaEWwUfemclPpfRssFJO.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "Ultrasonic Seraphim",
+        url: "https://fileditchfiles.me/file.php?f=/b53/ULPqlgCulzYGuwMkCaE.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      }
+    ]
+  },
+  {
     category: "Satanique Samba Trio",
     links: [
       {
@@ -3640,6 +4773,64 @@
         url: "https://pomf2.lain.la/f/6ukedh5x.7z",
         description: "",
         tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "SCUM",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/4wu5h6wiy1uk",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "AXX / Spooning",
+        url: "https://pomf2.lain.la/f/s1eh8dwc.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Scan Has Undergone Several Minor Revisions",
+        url: "https://pomf2.lain.la/f/98tbjpzb.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Scissors for Cutting Up Merzbow",
+        url: "https://pomf2.lain.la/f/xuozagg1.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Severances",
+        url: "https://pomf2.lain.la/f/aow8xcw.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Steel Cum",
+        url: "https://pomf2.lain.la/f/gfy8ud74.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "sh",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/oqy0q041nwas",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "深き森から (Fukaki Mori Kara)",
+        url: "https://pomf2.lain.la/f/0viytp0j.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
       }
     ]
   },
@@ -3750,6 +4941,58 @@
     ]
   },
   {
+    category: "Solid Space",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/9ex1p0kyanh8",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Space Museum",
+        url: "https://pomf2.lain.la/f/3fcif098.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Sortsind",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/ehc6dcwcfu1e",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Fald",
+        url: "https://pomf2.lain.la/f/ykrk8z5.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "More Days",
+        url: "https://pomf2.lain.la/f/rb016a5.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Sår",
+        url: "https://pomf2.lain.la/f/uaoeidni.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Tomhed",
+        url: "https://pomf2.lain.la/f/cujpyisg.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
     category: "Stahlbau",
     links: [
       {
@@ -3767,6 +5010,65 @@
       {
         title: "Die Macht der Reichen",
         url: "https://pomf2.lain.la/f/7xbq26sp.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Stalaggh",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/rjz7az98pf7q",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Anti-Geldof Compilation",
+        url: "https://pomf2.lain.la/f/d18wohpt.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Nihilistik Terrror",
+        url: "https://pomf2.lain.la/f/fmkbia43.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Projekt Misanthropia",
+        url: "https://pomf2.lain.la/f/dlydcdy2.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Projekt Nihil",
+        url: "https://pomf2.lain.la/f/rakv0ser.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Projekt Terrror: A Visualization",
+        url: "https://pomf2.lain.la/f/flmlrpi.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Projekt Terrror",
+        url: "https://pomf2.lain.la/f/o4wfq3e7.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Pure Misanthropia",
+        url: "https://pomf2.lain.la/f/trumgody.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Stalaggh",
+        url: "https://pomf2.lain.la/f/hghi0u.7z",
         description: "",
         tags: ["MP3", "pomf"]
       }
@@ -3822,6 +5124,89 @@
         url: "https://pomf2.lain.la/f/pqzpcsod.7z",
         description: "",
         tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Steven Stapleton",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/brwlnrn2c5tv",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Dead Memory",
+        url: "https://pomf2.lain.la/f/ggasjn7g.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Der Brennende Acker",
+        url: "https://pomf2.lain.la/f/0mlmeilb.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Gran Reserva",
+        url: "https://pomf2.lain.la/f/w5fd26kh.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Musical Pumpkin Cottage",
+        url: "https://pomf2.lain.la/f/9s8odjfi.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Octopus",
+        url: "https://pomf2.lain.la/f/wn6v2c79.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Painting With Priests",
+        url: "https://pomf2.lain.la/f/up50bafz.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Revenge of the Selfish Shellfish",
+        url: "https://pomf2.lain.la/f/8hwevgni.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "The Man Who Floated Away / The Closer You Are to the Center, the Further You Are From the Edge",
+        url: "https://pomf2.lain.la/f/c0c49mer.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "The Sadness of Things",
+        url: "https://pomf2.lain.la/f/f3rbsg5a.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "The Sleeping Moustache",
+        url: "https://pomf2.lain.la/f/ok63p7a9.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "The Threat of Memory",
+        url: "https://fileditchfiles.me/file.php?f=/b53/qLHjQelECXMonbNkNXCx.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "The Threats of Memories",
+        url: "https://fileditchfiles.me/file.php?f=/b53/MJUWOelJnLbvdwNgpxT.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
       }
     ]
   },
@@ -4313,6 +5698,425 @@
     ]
   },
   {
+    category: "ザ・ゲロゲリゲゲゲ [The Gerogerigegege]",
+    links: [
+      {
+        title: "Folder Part 1",
+        url: "https://buzzheavier.com/d8p3btcmd63a",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Folder Part 2",
+        url: "https://buzzheavier.com/rc8jz9jvior8",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: ">(decrescendo)",
+        url: "https://pomf2.lain.la/f/oj08kwbh.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: ">(decrescendo) Box",
+        url: "https://pomf2.lain.la/f/n6iwel3h.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: ">(decrescendo) Final Chapter",
+        url: "https://pomf2.lain.la/f/oazvtpse.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "1985 Unreleased Recording",
+        url: "https://pomf2.lain.la/f/o152y05h.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "45RPM Performance",
+        url: "https://pomf2.lain.la/f/5scjtqyo.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "愛人",
+        url: "https://pomf2.lain.la/f/vjpgwfxi.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "All My Best to You, With Love, Juntaro",
+        url: "https://pomf2.lain.la/f/v53kzgzj.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "All You Need Is Audio Shock",
+        url: "https://pomf2.lain.la/f/y55ewtko.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "今日という日が生まれた時から決まっているように",
+        url: "https://pomf2.lain.la/f/4f995vlz.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Blackout Archive V.1+2+3+4",
+        url: "https://pomf2.lain.la/f/8xxu3qq7.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Bootleg of Instruments Disorder (170 Songs) Bootleg",
+        url: "https://pomf2.lain.la/f/uruyr8ao.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Bootleg of Mort Douce Live Bootleg",
+        url: "https://pomf2.lain.la/f/4th1qj2.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Bootleg of Senzuri Champion Bootleg",
+        url: "https://pomf2.lain.la/f/e22xo47.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "大都会/便所",
+        url: "https://pomf2.lain.la/f/aho2s7xo.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Early Dream Exit",
+        url: "https://pomf2.lain.la/f/o2f0j6w.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Endless Humiliation",
+        url: "https://pomf2.lain.la/f/13r0r970.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Eternal Energy (For Continuing Blundering Life) / Noise's Not Dead",
+        url: "https://pomf2.lain.la/f/06sm3ha2.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "不安な演奏",
+        url: "https://fileditchfiles.me/file.php?f=/b53/XVqhPPYtvfBVrpjeZjkO.7z",
+        description: "",
+        tags: ["MP3", "fileditch"]
+      },
+      {
+        title: "Gig in Train",
+        url: "https://pomf2.lain.la/f/xs8tv8nd.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Hell Driver",
+        url: "https://pomf2.lain.la/f/gif979lw.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Hotel Ultra",
+        url: "https://pomf2.lain.la/f/u1auuy4n.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Instruments Disorder",
+        url: "https://pomf2.lain.la/f/vre92txh.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Kebab Kaaos / Monolith Dance",
+        url: "https://pomf2.lain.la/f/cdww6hta.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "北の丸百景 (Kitanomaru Hyakkei)",
+        url: "https://pomf2.lain.la/f/0eim8fp.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Life Documents",
+        url: "https://pomf2.lain.la/f/o9j6ulqf.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Live At Tokyo Gay Center",
+        url: "https://pomf2.lain.la/f/4d7m5l.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Live Greatest Hits",
+        url: "https://pomf2.lain.la/f/1nt6hdin.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Masturbation Rarities",
+        url: "https://pomf2.lain.la/f/ef02pdhb.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "燃えない灰 (Moenai Hai)",
+        url: "https://pomf2.lain.la/f/4qwdyvi1.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "燃えない腹",
+        url: "https://pomf2.lain.la/f/yq6mxtxn.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "More Shit",
+        url: "https://pomf2.lain.la/f/mmhamuae.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Mort Douce Live",
+        url: "https://pomf2.lain.la/f/6m37wcln.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Mother Fellatio",
+        url: "https://pomf2.lain.la/f/tmhj0iio.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Night",
+        url: "https://pomf2.lain.la/f/gsxbjc2m.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "No Sound",
+        url: "https://pomf2.lain.la/f/ii6jmx5.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "None Friendly",
+        url: "https://pomf2.lain.la/f/n3pm5cr.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Nothing To Hear / Nothing To... 1985",
+        url: "https://pomf2.lain.la/f/g5b1lfyd.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Piano River",
+        url: "https://pomf2.lain.la/f/c4895cxm.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Piss Shower Girlfriend",
+        url: "https://pomf2.lain.la/f/3j41w53a.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Ramones / New Toy for Children",
+        url: "https://pomf2.lain.la/f/3zc7egw.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Recollections of Primary Masturbation",
+        url: "https://pomf2.lain.la/f/cdv7ddh7.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Saturdaynight Big Cock Salaryman",
+        url: "https://pomf2.lain.la/f/5kmausd.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Senzuri Champion",
+        url: "https://pomf2.lain.la/f/047mzh1.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Senzuri Champion Revised",
+        url: "https://pomf2.lain.la/f/7efb6rn9.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Senzuri Fight Back",
+        url: "https://pomf2.lain.la/f/mlcdpj64.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Senzuri Monkey Metal Action",
+        url: "https://pomf2.lain.la/f/djj0z0d2.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Senzuri Power Up",
+        url: "https://pomf2.lain.la/f/qkgw7751.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Seven Inches of Meat",
+        url: "https://pomf2.lain.la/f/bxbagtnm.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "新宿に命さびしむ歌多し",
+        url: "https://fileditchfiles.me/file.php?f=/b53/BMOHLoUDxgWUbuauHPFJ.7z",
+        description: "",
+        tags: ["FLAC", "fileditch"]
+      },
+      {
+        title: "Showa",
+        url: "https://pomf2.lain.la/f/bqx5rqt9.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Singles 1985-1993",
+        url: "https://pomf2.lain.la/f/20saaqtv.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "The Gerogerigegege",
+        url: "https://pomf2.lain.la/f/lwymkhit.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "The Gerogerigegege / Black Leather Jesus",
+        url: "https://pomf2.lain.la/f/uvoe0se3.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "The Sexual Behavior in the Human Male",
+        url: "https://pomf2.lain.la/f/c5oy4nkt.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "パンクの鬼 Tokyo Anal Dynamite",
+        url: "https://pomf2.lain.la/f/8y7mnm7.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Tokyo Anal Dynamite Singles",
+        url: "https://pomf2.lain.la/f/7iwn4m.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "センズリが止まらない  / Rehabilit Dance",
+        url: "https://pomf2.lain.la/f/31zl3rlg.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Uguisudani Apocalypse (2019)",
+        url: "https://pomf2.lain.la/f/lu40nmjx.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Uguisudani Apocalypse (2021)",
+        url: "https://pomf2.lain.la/f/q51hgoba.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Veel Plezier!",
+        url: "https://pomf2.lain.la/f/i55h3xlp.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Violence Onanie",
+        url: "https://pomf2.lain.la/f/uva9dak.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "William Bennett Is My Dick",
+        url: "https://pomf2.lain.la/f/p7vj3ky3.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Wreck of Rock N' Roll Former Self",
+        url: "https://pomf2.lain.la/f/lmm336r5.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Yasukuni Jinja",
+        url: "https://pomf2.lain.la/f/8mrarvpt.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Yellow Trash Bazooka",
+        url: "https://pomf2.lain.la/f/hpgxfwmt.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "吐き気がするほどオマンチンコだぜ ! おまえは !",
+        url: "https://pomf2.lain.la/f/pqroetq.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "直美のオナニーと若草寮案内 RE-ISSUE",
+        url: "https://pomf2.lain.la/f/wjxs84a.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
     category: "The Stars Are Weeping",
     links: [
       {
@@ -4425,6 +6229,35 @@
     ]
   },
   {
+    category: "Theoretical Girls",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/zgyyfzeyol9m",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Songs '77-'79",
+        url: "https://pomf2.lain.la/f/3xk5p010.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Theoretical Girls",
+        url: "https://pomf2.lain.la/f/yr2hc7qm.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "U.S. Millie / You Got Me",
+        url: "https://pomf2.lain.la/f/33xtg9yz.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      }
+    ]
+  },
+  {
     category: "Thy Light",
     links: [
       {
@@ -4454,6 +6287,29 @@
     ]
   },
   {
+    category: "Το Ψυγείο Ψυγείο [To Psigio Psigio]",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/mpkbibhrvmp1",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Εμπιστοσύνη",
+        url: "https://pomf2.lain.la/f/ib9yq5tz.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Το Ψυγείο Ψυγείο",
+        url: "https://pomf2.lain.la/f/o229e58v.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
     category: "Toll",
     links: [
       {
@@ -4473,6 +6329,167 @@
         url: "https://small.fileditchstuff.me/s19/apysidEyMonerBdGkrYj.7z",
         description: "",
         tags: ["MP3", "fileditch"]
+      }
+    ]
+  },
+  {
+    category: "Trist",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/suyacr0g08gz",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Audio Negativity",
+        url: "https://pomf2.lain.la/f/l4jfbuv.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Black Veils",
+        url: "https://pomf2.lain.la/f/gqpvnhl7.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Citová Deprivace",
+        url: "https://pomf2.lain.la/f/r1at03uf.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Do Tmy Žalu I Nicoty",
+        url: "https://pomf2.lain.la/f/e52292xh.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Grimnir / Trist / Regnum / Hypothermia",
+        url: "https://pomf2.lain.la/f/0q5qoj.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Hypothermia / Trist",
+        url: "https://pomf2.lain.la/f/b6uoitmb.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Korium / Trist",
+        url: "https://pomf2.lain.la/f/scvmolh2.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Není Cesty Zpět",
+        url: "https://pomf2.lain.la/f/2msk4axi.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Nostalgie",
+        url: "https://pomf2.lain.la/f/3zx4derc.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Prach Nesvěta",
+        url: "https://pomf2.lain.la/f/9491eh2.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Pustota",
+        url: "https://pomf2.lain.la/f/dozg96vt.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Sebeurazedni Andele",
+        url: "https://pomf2.lain.la/f/j9htt7d.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Slunce v snovém kraji, rozplývání, echa...",
+        url: "https://pomf2.lain.la/f/kch9yew7.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Stíny",
+        url: "https://pomf2.lain.la/f/1o7bkjlk.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Trist / Kaxur / Holomráz",
+        url: "https://pomf2.lain.la/f/6m78mn0n.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Trist / Lonesummer",
+        url: "https://pomf2.lain.la/f/1cwclj59.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Trist / Nuit Noire",
+        url: "https://pomf2.lain.la/f/o2fqn2wv.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Trnový Labyrint",
+        url: "https://pomf2.lain.la/f/bk6rabxl.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Ve Snech Nekrvácím",
+        url: "https://pomf2.lain.la/f/fg4y9q56.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Večerní samoty",
+        url: "https://pomf2.lain.la/f/x1c2esf8.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Z Kraje mrtvých stínů",
+        url: "https://pomf2.lain.la/f/0cdq05xg.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Za Hranicí Skutečnosti",
+        url: "https://pomf2.lain.la/f/h5hgk4ya.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Zjitřená bolest",
+        url: "https://pomf2.lain.la/f/fuzw4fml.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Zrcadlení Melancholie",
+        url: "https://pomf2.lain.la/f/8ygwh3.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Říjen pod mlhou",
+        url: "https://pomf2.lain.la/f/lboudq94.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
       }
     ]
   },
@@ -4559,6 +6576,152 @@
         url: "https://small.fileditchstuff.me/s19/PHzRthWZbXpUYuNlaLNG.zip",
         description: "",
         tags: ["FLAC", "fileditch"]
+      }
+    ]
+  },
+  {
+    category: "X-Communication",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/fgshribyhs8o",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "X-Communication",
+        url: "https://pomf2.lain.la/f/q7agof0m.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "X-TG",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/jddl8406cpzi",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "แฝดนรก (Faet Narok)",
+        url: "https://pomf2.lain.la/f/yf5c8n2h.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Desertshore / The Final Report",
+        url: "https://pomf2.lain.la/f/75qoqzkm.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Live At Casa da Música, Porto (5 de Novembro, 2010)",
+        url: "https://pomf2.lain.la/f/m36mm57u.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Xmal Deutschland",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/pmdq7su5ba1i",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "Devils",
+        url: "https://pomf2.lain.la/f/3jkniqjn.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Fetisch",
+        url: "https://pomf2.lain.la/f/5lxmrokz.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Sequenz",
+        url: "https://pomf2.lain.la/f/uzn4y64z.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Singled Out: The Complete A & B-sides 1980-1989",
+        url: "https://pomf2.lain.la/f/ctvy6z05.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "The Peel Sessions",
+        url: "https://pomf2.lain.la/f/ks1rewwh.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Tocsin",
+        url: "https://pomf2.lain.la/f/l2hrujnn.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Viva",
+        url: "https://pomf2.lain.la/f/i03uwczv.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      }
+    ]
+  },
+  {
+    category: "Zos Kia",
+    links: [
+      {
+        title: "Folder",
+        url: "https://buzzheavier.com/g3jo8nmzhwll",
+        description: "",
+        tags: ["buzzheavier"]
+      },
+      {
+        title: "23",
+        url: "https://pomf2.lain.la/f/dnn8p2t.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Be Like Me / Ten Miles High",
+        url: "https://pomf2.lain.la/f/p9d7bdvf.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "How to Destroy Angels",
+        url: "https://pomf2.lain.la/f/dug2y8yn.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
+      },
+      {
+        title: "Live at Magenta Club, London, 05 August 1983",
+        url: "https://pomf2.lain.la/f/ou5bflr.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Rape",
+        url: "https://pomf2.lain.la/f/ykblytuk.7z",
+        description: "",
+        tags: ["MP3", "pomf"]
+      },
+      {
+        title: "Transparent",
+        url: "https://pomf2.lain.la/f/vemgq6y8.7z",
+        description: "",
+        tags: ["FLAC", "pomf"]
       }
     ]
   },
@@ -4800,9 +6963,17 @@
         handleHash();
     }
 
+    // Update category counter
+    function updateCategoryCounter() {
+        document.getElementById('categoryCount').textContent = linksData.length;
+    }
+
     // Initial page load
     initializePage();
     window.addEventListener('hashchange', handleHash);
+
+    // Call this after initial render
+    updateCategoryCounter();
     </script>
 
 <!-- Home Button -->
