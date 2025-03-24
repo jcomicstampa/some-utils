@@ -187,6 +187,17 @@
         z-index: 1000;
         /* Small size and fixed positioning */
     }
+        .warning-message {
+        color: #dc2626; /* Red-600 */
+        font-size: 0.9rem;
+        text-align: center;
+        padding: 1rem;
+        margin: 2rem 0;
+        border: 1px solid #fecaca; /* Red-100 */
+        border-radius: 8px;
+        background-color: #fef2f2; /* Red-50 */
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
     </style>
 </head>
 
@@ -7257,6 +7268,10 @@
     // Call this after initial render
     updateCategoryCounter();
     </script>
+
+<div class="warning-message">
+  ⚠️ For archival purposes only, this is only an indexer of links.
+</div>
 
 <!-- Home Button -->
 <a href="https://jcomicstampa.github.io/some-utils/show index" class="home-button" aria-label="Return to Home">
